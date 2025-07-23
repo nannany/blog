@@ -75,6 +75,54 @@ git push origin main
 
 数分後に https://nannany.github.io/blog/ で記事が公開されていることを確認
 
+## テーマの変更
+
+### 1. 新しいテーマを探す
+
+Hugo公式テーマサイトでテーマを探します：https://themes.gohugo.io/
+
+### 2. 現在のテーマを削除
+
+```bash
+# サブモジュールを削除
+git submodule deinit themes/ananke
+git rm themes/ananke
+rm -rf .git/modules/themes/ananke
+```
+
+### 3. 新しいテーマを追加
+
+```bash
+# 例：PaperModテーマを追加する場合
+git submodule add https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
+```
+
+### 4. 設定ファイルを更新
+
+`hugo.toml` でテーマ名を変更：
+
+```toml
+theme = 'PaperMod'  # 新しいテーマ名に変更
+```
+
+### 5. テーマ固有の設定を追加
+
+各テーマの README を参照して、必要な設定を `hugo.toml` に追加します。
+
+### 6. ローカルで確認
+
+```bash
+hugo server --buildDrafts
+```
+
+### 7. 変更をデプロイ
+
+```bash
+git add .
+git commit -m "テーマを変更: 新テーマ名"
+git push origin main
+```
+
 ### ビルド
 
 ```bash
