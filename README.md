@@ -29,11 +29,51 @@ hugo server --buildDrafts
 
 3. ブラウザで http://localhost:1313 にアクセス
 
-### 記事の作成
+### 記事の作成と公開
+
+#### 1. 新しい記事を作成
 
 ```bash
 hugo new content posts/記事名.md
 ```
+
+#### 2. 記事を編集
+
+作成されたMarkdownファイルを編集します。
+
+```markdown
++++
+date = '2025-07-23T22:41:07+09:00'
+draft = false  # 公開する場合はfalseに変更
+title = '記事のタイトル'
+tags = ['タグ1', 'タグ2']
++++
+
+# 記事の内容をMarkdownで記述
+
+本文をここに書きます。
+```
+
+#### 3. ローカルで確認
+
+```bash
+hugo server --buildDrafts
+```
+
+#### 4. 記事を公開
+
+```bash
+# 変更をコミット
+git add .
+git commit -m "新しい記事を追加: 記事のタイトル"
+
+# GitHubにプッシュ（自動デプロイが実行されます）
+git push origin main
+```
+
+#### 5. 公開確認
+
+数分後に https://nannany.github.io/blog/ で記事が公開されていることを確認
 
 ### ビルド
 
